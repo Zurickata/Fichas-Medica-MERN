@@ -54,10 +54,12 @@ function LandingFrame() {
     </div>
 }
 function Welcome() {
-    return <div>
-        <Encabezado/>
-        <LandingFrame />
-    </div>
+    return ( 
+        <div>
+            <Encabezado/>
+            <LandingFrame />
+        </div>
+    );
 }
 
 export default Welcome

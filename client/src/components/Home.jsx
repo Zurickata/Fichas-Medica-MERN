@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { deleteFicha, getFichasActivas } from '../api';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import FichaPDF from './FichaPDF';
 import Encabezado from "./Encabezado";
 
 function Home() {
@@ -18,11 +20,15 @@ function Home() {
     const handleDelete = async (id) => {
         await deleteFicha(id);
         window.location.reload();
-    }
+    };
 
     const handleEdit = async (id) => {
         window.location.reload();
-    }
+    };
+
+    const handleDownloadPDF = () => {
+        // Lógica para generar el archivo PDF
+    };
 
     return (
         <div>
@@ -48,6 +54,16 @@ function Home() {
                     <Button onClick={() => handleDelete(ficha._id)} variant="danger">
                         Dar de Alta
                     </Button>
+                    <br />
+                    <Button onClick={handleDownloadPDF}>Generar PDF</Button>
+
+                    {/* Opcionalmente, puedes utilizar PDFDownloadLink para permitir a los usuarios descargar el PDF */}
+                    <PDFDownloadLink document={<FichaPDF ficha={ficha} />} fileName="ficha_medica.pdf">
+                        {({ blob, url, loading, error }) =>
+                        loading ? 'Generando PDF...' : 'Descargar PDF'
+                        }
+                    </PDFDownloadLink>
+
                     </Card.Body>
                 </Card>
                 <br />

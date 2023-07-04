@@ -27,7 +27,7 @@ const AddFichas = async (req, res) => {
         res.json(addFichas);
     }
     catch (error) {
-        console.log("Dejaste la caga", error);
+        console.log("Dejaste la caga ", error);
         res.json({ error: "Error al agregar la ficha medica"});
     }
 };

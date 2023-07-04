@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { getFichasInactivas } from '../api';
 import Encabezado from "./Encabezado";

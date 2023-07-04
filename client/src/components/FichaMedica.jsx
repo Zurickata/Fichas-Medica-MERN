@@ -23,6 +23,10 @@ function FichaMedica() {
 
     const navigate = useNavigate();
 
+    const handleCategoriaChange = (SelectCategoria) => {
+        setCategoria(SelectCategoria);
+    };
+
     // Función para enviar el formulario
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -115,8 +119,8 @@ function FichaMedica() {
                     </Form.Group>
             
                     <Form.Group as={Col} className='mb-3'>
-                        <Form.Label>Categoría:</Form.Label>
-                        <Form.Control type="text" value={categoria} placeholder="Categoría C1 - C5" onChange={(event) => setCategoria(event.target.value)} />
+                        <Form.Label>Categoria Triage:</Form.Label>
+                        <SelectTriage onCategoriaChange={handleCategoriaChange} />
                     </Form.Group>
                 </Row>
                 
@@ -125,7 +129,28 @@ function FichaMedica() {
         <ToastContainer/>
         </div>
     </div>
-  );
+    );
+}
+
+function SelectTriage({ onCategoriaChange }) {
+    const [categoria, setCategoria] = useState('');
+  
+    const handleCategoriaChange = (event) => {
+        const selectedCategoria = event.target.value;
+        setCategoria(selectedCategoria);
+        onCategoriaChange(selectedCategoria);
+    };
+
+    return (
+        <Form.Select value={categoria} onChange={handleCategoriaChange}>
+            <option>Categoria Triage</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+            <option value="C3">C3</option>
+            <option value="C4">C4</option>
+            <option value="C5">C5</option>
+        </Form.Select>
+    );
 }
 
 export default FichaMedica;

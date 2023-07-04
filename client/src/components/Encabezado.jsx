@@ -19,7 +19,7 @@ function Encabezado({ nombre }) {
                 <Button href="./addFicha">Ingresar Nuevo Paciente</Button>
                 <Button href="./login">Iniciar Sesión</Button>
             </Container>
-            </Navbar>
+        </Navbar>
     );
 }
 
